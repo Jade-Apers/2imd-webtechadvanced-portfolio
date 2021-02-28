@@ -1,3 +1,31 @@
 *{
     box-sizing: border-box;
 }
+
+.homework{
+background-color: red;
+text-align: center;
+text-transform: uppercase;
+font-weight: bold;
+padding: 5px;
+margin: 10px;
+}
+
+.broken{
+background-color: lightskyblue;
+text-align: center;
+text-transform: uppercase;
+font-weight: bold;
+padding: 5px;
+margin: 10px;
+
+}
+
+.cloud{
+background-color: yellow;
+text-align: center;
+text-transform: uppercase;
+font-weight: bold;
+padding: 5px;
+margin: 10px;
+}
