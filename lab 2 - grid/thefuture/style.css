@@ -1,29 +1,27 @@
 *{
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 18px;
+    font-size: 12px;
+}
+
+h1{
     text-align: center;
+    vertical-align: center;
 }
 
 .homework{
 background-color: red;
 text-transform: uppercase;
-font-weight: bold;
-padding: 5px;
-margin: 5px;
-
-}
-
-h1{
-    align-self: center;
+padding: 6px;
+margin: 6px;
 }
 
 .broken{
 background-color: lightskyblue;
 text-transform: uppercase;
 font-weight: bold;
-padding: 5px;
-margin: 5px;
+padding: 6px;
+margin: 6px;
 
 }
 
@@ -31,9 +29,9 @@ margin: 5px;
 background-color: yellow;
 text-transform: uppercase;
 font-weight: bold;
-padding: 5px;
-margin: 5px;
 display: grid;
+padding: 6px;
+margin: 6px;
 }
 
 @media (min-width: 60em){
@@ -51,8 +49,6 @@ display: grid;
         display: grid;
         grid-template-rows: repeat(3, 1fr);
         grid-template-columns: repeat(5, auto);
-        align-items: center;
-        grid-auto-flow: column;
         grid-column-gap: 20px;
        
     }
@@ -67,11 +63,6 @@ display: grid;
         display: grid;
         grid-row: 2/4;
         grid-column: 4/6;
-    }
- 
-    div p {
-        align-content: center;
-        text-align: center;
     }
 
 
