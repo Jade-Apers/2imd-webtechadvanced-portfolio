@@ -3,3 +3,7 @@ link to my portfolio repository: [https://github.com/Jade-Apers/2imd-webtechadva
 
 Lab 1
 link to repository: [https://github.com/Jade-Apers/2imd-dev-advanced-lab1.git]
+
+Lab 2
+link to repository: 
+[https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio/tree/lab2-grid/]
