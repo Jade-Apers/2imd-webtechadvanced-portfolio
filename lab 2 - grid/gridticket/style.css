@@ -5,7 +5,27 @@
     font-family: Verdana;
 }
 
-body{
+h1{
+    text-align: center;
+    font-size: 40px;
+    letter-spacing: 10px;
+}
+
+h2{
+    font-size: 20px;
+    font-weight: 50%;
+}
+
+h3{
+    text-align: center;
+    font-weight: lighter;
+    font-size: 15px;
+    letter-spacing: 6px;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     background-image: url(festival.jpg);
     background-position: center top;
     background-size: cover;
@@ -14,125 +34,141 @@ body{
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-section{
-    display: grid;
-    grid-template-columns: ;
-}
-
 .banner {
 background-color: black;
 color: white;
-padding: 8%;
+padding: 40px;
+grid-column: 1/3;
+display: flex;
+flex-direction: column;
 }
 
-h1{
-    text-align: center;
-    font-size: 40px;
-    letter-spacing: 10px;
+.qr {
+    grid-column: 1/3;
+    padding: 140px 80px;
 }
 
-h3{
-    text-align: center;
-    font-weight: lighter;
-    margin-top: 15px;
-    font-size: 15px;
-    letter-spacing: 6px;
-}
-
-section{
-    height: 100vh;
-}
-
-.tabel{
-    margin-top: 80px;
-    padding-top: 20%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-}
-
-.box1{
-   width: 100%;
-   height: 100%;
-   text-align: center; 
-   padding: 20px;
-}
-
-.box2{
+img{
     width: 100%;
-    height: 100%;
+}
+
+.month{
+    grid-column: 1/2;
+   text-align: center; 
+   border: 1px solid black;  
+   padding: 15px;
+}
+
+.admit-1{
+    grid-column: 2/3;
     text-align: center; 
-    padding: 20px;
+    border: 1px solid black;
+    padding: 15px; 
  }
 
-.box3{
+.ticket-price{
     grid-column: 1/3;
-    width: 100%;
-    height: 100%;
     text-align: center; 
-    padding: 20px;
-}
-
-.borders{
-    border: 2px solid #000; 
+    border: 1px solid black;
+    padding: 15px;
 }
 
 .hide{
-    visibility: hidden;
+    display:none;
 }
 
-.qr{
-    width: 20em;
-    padding-top: 100px;
-}
-
-h2{
-    font-size: 20px;
-    font-weight: 50%;
-}
 
 @media(min-width: 1000px){
-   section{
-       display: grid;
-       grid-template-columns: 60% 40%;
-       grid-template-rows: 60% 25% 15%;
-       height: 0px;
-   } 
-
-   .banner{
-       background-color: transparent;
-       color: black;
-       border: 1px solid black;
-   }
-
-   .tabel{
-       display: grid;
-       grid-template-columns: 1fr 1fr 1fr;
-   }
-
-   h1{
-       font-size: 100px;
-   }
-
-.box3{
-    grid-column: 3/4;
-}
-
-.hide{
-    visibility: visible;
-    border: 1px solid black;
-    height: 100%;
-    width: 100%;
-    grid-column: 1/4;
-    padding: 20px;
+  
+    body{
+    margin: 20px;
+    padding:0px;
+    grid-template-columns: 1fr 1fr 1fr 1.4fr;
+    grid-template-rows: 150px 1fr 1fr;
+    align-items: center;
     text-align: center;
-} 
+    background-position: 0 100%;
+    border: 1px solid black;
+    }
 
-body{
-    background-position: 0 60%;
-    background-size: cover;
-}
+    .banner{
+    background-color: transparent;
+    grid-column: 1/4;
+    padding: 5px;
+    flex-direction: column-reverse;
+    padding-top: 50px;
+   
+    }
 
+    .qr{
+        grid-column: 4/5;
+        grid-row: 1/4;
+        border-left: 1px solid black;
+    }
+
+    .month{
+        grid-column: 1/2;
+        grid-row: 2/2;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-left: none;
+        border-right: none;  
+        padding: 20px; 
+    }
+
+    .admit-1{
+        grid-column: 2/3;
+        grid-row: 2/2;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;;
+        border-right: none; 
+        padding: 20px;  
+       
+    }
+
+    .ticket-price{
+        grid-column: 3/4;
+        grid-row: 2/2;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;;
+        border-right: none;  
+        padding: 20px; 
+    }
+
+    .hide{
+        display: block;
+        grid-column: 1/4;
+        grid-row: 3/4;
+    }
+
+    h1{
+        font-size: 95px;
+        color: black;
+        padding-bottom: 20px;
+    }
+
+    h2{
+        font-size: 50px;
+    }
+
+    h3{
+        color: black;
+    }
+
+    p{
+        text-align: center;
+        font-size: 20px;
+    }
+
+    img{
+        width: 50%;
+    }
+
+    .qr{
+        padding: 10px;
+    }
 
      
 }
