@@ -1,9 +1,12 @@
-2imd-webtech3-labs
+# 2imd-webtech3-labs
 link to my portfolio repository: [https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio.git]
 
-Lab 1
-link to repository: [https://github.com/Jade-Apers/2imd-dev-advanced-lab1.git]
+## Lab 1
+1) [Click here for Lab 1](https://github.com/Jade-Apers/2imd-dev-advanced-lab1.git)
 
-Lab 2
-link to thefuture: [https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio/tree/main/lab%202%20-%20grid/thefuture]
-link to gridticket: [https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio/tree/main/lab%202%20-%20grid/gridticket]
+## Lab 2
+[Click here for lab 2](https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio/tree/lab2-grid/lab%202%20-%20grid)
+
+1) [click here for the future in codepen](https://codepen.io/jade-apers/pen/MWbzYdP)
+
+2) [Click here for my gridticket in codepen](https://codepen.io/jade-apers/pen/KKNrpwx)
