@@ -1,27 +1,10 @@
 {
-  "name": "lab3-todo-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
-  "scripts": {
-    "start": "serve",
-    "build": "babel src -d lib"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/codesandbox-app/static-template.git"
-  },
-  "keywords": [],
-  "author": "Ives van Hoorne",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/codesandbox-app/static-template/issues"
-  },
-  "homepage": "https://github.com/codesandbox-app/static-template#readme",
-  "devDependencies": {
-    "serve": "^11.2.0",
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0"
-
+    "name": "lab3-advancedjs",
+    "version": "1.0.0",
+ "scripts": {
+"build": "babel src -d lib"
+},
+    "devDependencies": {
+      "@babel/cli": "^7.0.0"
+    }
   }
-}
