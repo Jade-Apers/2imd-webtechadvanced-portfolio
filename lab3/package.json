@@ -1,0 +1,24 @@
+{
+  "name": "2imd-webtechadvanced-portfolio",
+  "version": "1.0.0",
+  "description": "2imd-webtech3-labs\r link to my portfolio repository: [https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio.git]",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio.git"
+  },
+  "author": "Jade Apers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio/issues"
+  },
+  "homepage": "https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio#readme",
+  "dependencies": {
+    "@babel/preset-env": "^7.13.10",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
