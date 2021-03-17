@@ -6,6 +6,8 @@ class Note {
   
     createElement(title) {
       let newNote = document.createElement("li");
+
+       // HINT🤩 newNote.addEventListener('click', this.remove.bind(newNote));
       newNote.innerHTML= title;
       newNote.addEventListener('click', this.remove.bind(newNote));
   
@@ -13,7 +15,7 @@ class Note {
     }
   
     add() {
-      document.getElementById("taskList").appendChild(this.element);
+      let tasks = document.getElementById("taskList").appendChild(this.element);
       // HINT🤩
       // this function should append the note to the screen somehow
     }
@@ -22,7 +24,7 @@ class Note {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
-      const savedNote = JSON.parse(localStorage.getItem("note")); //get items from localstorage
+      const savedNote = JSON.parse(localStorage.getItem("savedNote")); //get items from localstorage
     }
   
     remove() {
@@ -30,6 +32,7 @@ class Note {
       // in this function, 'this' will refer to the current note element
       // .removeChild(this)
       // remove the item from screen and from localstorage
+      newNote = localStorage.removeItem("note");
     }
   }
   
