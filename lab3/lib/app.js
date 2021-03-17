@@ -22,6 +22,7 @@ class Note {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
+      const savedNote = JSON.parse(localStorage.getItem("note")); //get items from localstorage
     }
   
     remove() {
