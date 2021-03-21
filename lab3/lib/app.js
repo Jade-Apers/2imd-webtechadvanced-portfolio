@@ -39,26 +39,41 @@ class Note {
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
-  }
-
   
+    removeFromStorage(){
+    if (localStorage.getItem("noteList") != null) {
+      localStorage.removeItem("noteList", JSON.stringify(this.title));
+    } 
+  }
+}
 
 class App {
   constructor() {
     console.log("👊🏼 The Constructor!");
-  
+    this.txtTodo = document.getElementById("taskInput");
+    this.txtTodo.addEventListener("keypress", this.createNote.bind(this));
+    this.loadNotesFromStorage();
+    
     // HINT🤩
-    // clicking the button should work
-    // pressing the enter key should also work
-    // this.btnAdd = ???
-    // this.btnAdd.addEventListener("click", this.createNote.bind(this));
+    // pressing the enter key in the text field triggers the createNote function
+    // this.txtTodo = ???
+    // this.txtTodo.addEventListener("keypress", this.createNote.bind(this));
+    // read up on .bind() -> we need to pass the current meaning of this to the eventListener
+    // when the app loads, we can show previously saved noted from localstorage
     // this.loadNotesFromStorage();
   }
   
   loadNotesFromStorage() {
     // HINT🤩
     // load all notes from storage here and add them to the screen
-    // something like note.add() in a loop would be nice
+    let savedNotes = localStorage.getItem("savedNotes");
+    savedNotes = JSON.parse(savedNotes);
+    if (savedNotes != null) {
+      for (let i = 0; i < savedNotes.length; i++) {
+        let note = new Note(savedNotes[i]);
+        note.add();
+      }
+    }
   }
    
   createNote(e){
