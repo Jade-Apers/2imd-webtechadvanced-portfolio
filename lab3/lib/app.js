@@ -25,13 +25,23 @@ class Note {
  } 
   
   saveToStorage(){
+  
+    if (localStorage.getItem("noteList") === null) {
+      localStorage.setItem("noteList", JSON.stringify([this.title]));
+    } 
+    else {
+      let notes = JSON.parse(localStorage.getItem("noteList"));
+      notes.push(this.title);
+      localStorage.setItem("noteList", JSON.stringify(notes));
+      console.log(notes);
+    }
+  }
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
   }
+
   
-  
-}
 
 class App {
   constructor() {
