@@ -8,6 +8,7 @@ class Note {
   createElement(title){
     let newNote = document.createElement('li'); //create a <li> node
     newNote.addEventListener('click', this.remove.bind(newNote)); //makes a delete link
+    newNote.innerHTML = title;
     // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
     return newNote;
   }
@@ -19,9 +20,18 @@ class Note {
   }
 
   remove(){
-    document.getElementById("tasklist").removeChild(this.element);
-    // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
-   // in this function, 'this' will refer to the current note element
+    let taskList = document.getElementById("taskList");
+
+    let childToDelete = [...taskList.children].indexOf(this);
+    let noteList = JSON.parse(localStorage.getItem("noteList"));
+    noteList.splice(childToDelete, 1);
+    localStorage.setItem("noteList", JSON.stringify(noteList));
+
+    taskList.removeChild(this); 
+      // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
+      // in this function, 'this' will refer to the current note element
+      // .removeChild(this)
+      // remove the item from screen and from localstorage
  } 
   
   saveToStorage(){
@@ -36,23 +46,14 @@ class Note {
       console.log(notes);
     }
   }
-    // HINT🤩
-    // localStorage only supports strings, not arrays
-    // if you want to store arrays, look at JSON.parse and JSON.stringify
-  
-    removeFromStorage(){
-    if (localStorage.getItem("noteList") != null) {
-      localStorage.removeItem("noteList", JSON.stringify(this.title));
-    } 
-  }
 }
 
 class App {
   constructor() {
-    console.log("👊🏼 The Constructor!");
     this.txtTodo = document.getElementById("taskInput");
     this.txtTodo.addEventListener("keypress", this.createNote.bind(this));
     this.loadNotesFromStorage();
+    console.log("👊🏼 The Constructor!");
     
     // HINT🤩
     // pressing the enter key in the text field triggers the createNote function
@@ -66,27 +67,36 @@ class App {
   loadNotesFromStorage() {
     // HINT🤩
     // load all notes from storage here and add them to the screen
-    let savedNotes = localStorage.getItem("savedNotes");
-    savedNotes = JSON.parse(savedNotes);
-    if (savedNotes != null) {
-      for (let i = 0; i < savedNotes.length; i++) {
-        let note = new Note(savedNotes[i]);
-        note.add();
+    let noteList = localStorage.getItem("noteList");
+    noteList = JSON.parse(noteList);
+    if (noteList != null) {
+      for (let i = 0; i < noteList.length; i++) {
+        let note = new Note(noteList[i]);
+        note.add(); //add to screen
       }
     }
   }
    
   createNote(e){
-    // this function should create a new note by using the Note() class
-    
+     // this function should create a new note by using the Note() class
     // HINT🤩
     // note.add();
     // note.saveToStorage();
-    // this.reset();
+    // clear the text field with .reset in this class
+    // if (e.key === "Enter")
+    if (e.key === "Enter") {
+      let note = new Note(this.txtTodo.value);
+      note.add();
+      note.saveToStorage();
+
+      this.reset();
+      e.preventDefault();
+    }
   }
   
   reset(){
-    // this function should reset the form 
+      // this function should reset the form / clear the text field
+      this.txtTodo.value = "";
   }
   
 }
