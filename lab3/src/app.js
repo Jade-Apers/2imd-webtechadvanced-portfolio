@@ -84,7 +84,7 @@ class App {
     // note.saveToStorage();
     // clear the text field with .reset in this class
     // if (e.key === "Enter")
-    if (e.key === "Enter") {
+    if ((e.key === "Enter") && (this.txtTodo.value != "")) {
       let note = new Note(this.txtTodo.value);
       note.add();
       note.saveToStorage();
