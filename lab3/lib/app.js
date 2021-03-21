@@ -6,18 +6,23 @@ class Note {
   }
   
   createElement(title){
-    let newNote = document.createElement('li');
+    let newNote = document.createElement('li'); //create a <li> node
     newNote.addEventListener('click', this.remove.bind(newNote)); //makes a delete link
     // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
     return newNote;
   }
   
   add(){
-    
-
+    document.getElementById("taskList").appendChild(this.element);
     // HINT🤩
     // this function should append the note to the screen somehow
   }
+
+  remove(){
+    document.getElementById("tasklist").removeChild(this.element);
+    // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
+   // in this function, 'this' will refer to the current note element
+ } 
   
   saveToStorage(){
     // HINT🤩
@@ -25,10 +30,7 @@ class Note {
     // if you want to store arrays, look at JSON.parse and JSON.stringify
   }
   
-  remove(){
-     // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
-    // in this function, 'this' will refer to the current note element
-  } 
+  
 }
 
 class App {
