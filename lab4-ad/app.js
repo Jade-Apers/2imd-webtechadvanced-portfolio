@@ -3,7 +3,7 @@ class App{
         this.getLocation(); 
         this.lat;
         this.long;
-        this.apiKey = "222e90a01c3e820ef42bfd90b735c6c7";
+        this.apiKey = "39e1f326a97afb89e561b6ec8d92849c";
     }
 
     //locatie gegevens krijgen zoals de lattitude en longitude
@@ -20,20 +20,23 @@ class App{
         this.lat = result.coords.latitude;
         this.long = result.coords.longitude;
         this.getWeather(); //eens je de coordinaten hebt gaan we het weer oproepen
+      
+        console.log(result);
+        console.log(this.lat);
     }
 
     getWeather(){
-    let url = 'https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.apiKey}&units=metric`'
-    fetch(url)
-    .then((response) =>{
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.apiKey}&units=metric`;
+    fetch(url).then((response) =>{
         console.log(response);
         return response.json();
-    } ) .then((data) =>{
+    } ) .then(data =>{
+        document.querySelector("#weather")
         console.log(data);
-    }).catch((err) =>{
+    }).catch(err =>{
         console.log(err);
     });
-    }
+}
 
     errorLocation(err){
         console.log(err);
