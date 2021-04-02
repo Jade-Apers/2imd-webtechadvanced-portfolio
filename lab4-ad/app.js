@@ -14,6 +14,19 @@ class App{
             this.errorLocation.bind(this)   
         ); 
     }
+     //gegevens opnemen en in object steken
+     gotLocation(result){
+        this.lat = result.coords.latitude;
+        this.long = result.coords.longitude;
+        if(this.checkLocalStorage() === false){
+            this.getWeather();
+        } else{
+            this.dataFromStorage();
+        }
+        //this.getWeather(); //eens je de coordinaten hebt gaan we het weer oproepen
+        console.log(result);
+        console.log(this.lat);
+    }
 
     checkLocalStorage(){
         let storageTime = localStorage.getItem("storageTime");
@@ -32,15 +45,9 @@ class App{
         }
     }
 
-    //gegevens opnemen en in object steken
-    gotLocation(result){
-        this.lat = result.coords.latitude;
-        this.long = result.coords.longitude;
-        this.getWeather(); //eens je de coordinaten hebt gaan we het weer oproepen
-      
-        console.log(result);
-        console.log(this.lat);
-
+    dataFromStorage(){
+      temperature = localStorage.getItem("storageTemp");
+      this.showTemperature(temperature);
     }
 
     getWeather(){
@@ -52,29 +59,29 @@ class App{
         let fahr = data.main.temp;
         let temperature = (fahr - 32)/1.8;
         temperature = temperature.toFixed(2);
+        this.showTemperature(temperature);
+    })
+    .catch(err =>{
+        console.log(err);
+    })
+    console.log("check");
+}
+    showTemperature(temperature){
         document.querySelector("#weather").innerHTML= "it's " + temperature + " degrees outside";
-        document.querySelector("#weather").style.color="white";
-        
+        document.querySelector("#weather").style.color="white"; 
         if (temperature < 15){
             this.activityInside();
             document.querySelector(".container").style.background = `url(cloudy.jpg)`;
             document.querySelector(".container").style.backgroundSize = "150%";
             document.querySelector(".container").style.backgroundRepeat = "no-repeat";
-
-
         }
         else{
             this.activityOutside();
             document.querySelector(".container").style.background = `url(sunny.jpg)`;
             document.querySelector(".container").style.backgroundSize = "500%";
             document.querySelector(".container").style.backgroundRepeat = "no-repeat";
-        }   
-    })
-    
-    .catch(err =>{
-        console.log(err);
-    })
-}
+        }  
+    }
   
     activityInside(){
         let urlactivity= "http://www.boredapi.com/api/activity?type=relaxation";
@@ -112,5 +119,4 @@ class App{
         console.log(err);
     }
 }
-
 let app = new App();
