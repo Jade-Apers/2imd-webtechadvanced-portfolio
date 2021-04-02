@@ -33,15 +33,57 @@ class App{
     } ) .then(data =>{
         let fahr= data.main.temp;
         let temperature = (fahr - 32)/1.8;
-        temperature = Math.round(temperature);
+        temperature = temperature.toFixed(2);
+        document.querySelector("#weather").innerHTML= "it's " + temperature + " degrees outside";
+        document.querySelector("#weather").style.color="white";
         
-
-        document.querySelector("#weather").innerHTML= temperature;
-        console.log(data);
-    }).catch(err =>{
+        if (temperature < 9){
+            this.activityInside();
+            document.querySelector(".container").style.background = `url(cloudy.jpg)`;
+        }
+        else{
+            this.activityOutside();
+            document.querySelector(".container").style.background = `url(sunny.jpg)`;
+        }   
+    })
+    
+    .catch(err =>{
         console.log(err);
-    });
+    })
 }
+  
+    activityInside(){
+        let urlactivity= "http://www.boredapi.com/api/activity?type=relaxation";
+        fetch(urlactivity)
+        .then(response =>{
+            return response.json();
+        })
+        .then(data =>{
+            console.log(data);
+            document.querySelector("#activityInside").innerHTML= data.activity;
+            document.querySelector("#activityInside").style.color="white";
+            
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
+    activityOutside(){
+        let urlactivity= "http://www.boredapi.com/api/activity?type=social";
+        fetch(urlactivity)
+        .then(response =>{
+            return response.json();
+        })
+        .then(data =>{
+            console.log(data);
+            document.querySelector("#activityOutside").innerHTML= data.activity;
+            document.querySelector("#activityOutside").style.color="white";
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
 
     errorLocation(err){
         console.log(err);
