@@ -26,12 +26,17 @@ class App{
     }
 
     getWeather(){
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.apiKey}&units=metric&units=si`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.apiKey}&units=imperial`;
     fetch(url)
     .then(response =>{
         return response.json();
     } ) .then(data =>{
-        document.querySelector("#weather").innerHTML=data.main
+        let fahr= data.main.temp;
+        let temperature = (fahr - 32)/1.8;
+        temperature = Math.round(temperature);
+        
+
+        document.querySelector("#weather").innerHTML= temperature;
         console.log(data);
     }).catch(err =>{
         console.log(err);
