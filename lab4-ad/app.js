@@ -67,16 +67,17 @@ class App{
     console.log("check");
 }
     showTemperature(temperature){
-        document.querySelector("#weather").innerHTML= "it's " + temperature + " degrees outside";
-        document.querySelector("#weather").style.color="white"; 
+
         if (temperature < 15){
             this.activityInside();
+            document.querySelector(".title").innerHTML= "It's " + temperature + " °C outside." + "<br>That means that it's time for a relaxing activity.";
             document.querySelector(".container").style.background = `url(cloudy.jpg)`;
             document.querySelector(".container").style.backgroundSize = "150%";
             document.querySelector(".container").style.backgroundRepeat = "no-repeat";
         }
         else{
             this.activityOutside();
+            document.querySelector(".title").innerHTML= "It's " + temperature + " °C outside." + "<br>That means that it's a happy day for a social activity.";
             document.querySelector(".container").style.background = `url(sunny.jpg)`;
             document.querySelector(".container").style.backgroundSize = "500%";
             document.querySelector(".container").style.backgroundRepeat = "no-repeat";
@@ -93,6 +94,9 @@ class App{
             console.log(data);
             document.querySelector("#activityInside").innerHTML= data.activity;
             document.querySelector("#activityInside").style.color="white";  
+            document.querySelector("#activityInside").style.fontSize="25px";
+            document.querySelector("#activityInside").style.padding= "5px"; 
+            document.querySelector("#activityInside").style.fontFamily= "calibri";  
         })
         .catch(err => {
             console.log(err);
@@ -109,12 +113,14 @@ class App{
             console.log(data);
             document.querySelector("#activityOutside").innerHTML= data.activity;
             document.querySelector("#activityOutside").style.color="white";
+            document.querySelector("#activityOutside").style.fontSize="25px";
+            document.querySelector("#activityOutside").style.padding= "5px"; 
+            document.querySelector("#activityOutside").style.fontFamily= "calibri"; 
         })
         .catch(err => {
             console.log(err);
         });
     }
-
     errorLocation(err){
         console.log(err);
     }
