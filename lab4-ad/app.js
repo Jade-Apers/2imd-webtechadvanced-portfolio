@@ -82,6 +82,7 @@ class App{
             document.querySelector(".container").style.backgroundSize = "500%";
             document.querySelector(".container").style.backgroundRepeat = "no-repeat";
         }  
+        temperature = localStorage.setItem("storageTemp");
     }
   
     activityInside(){
