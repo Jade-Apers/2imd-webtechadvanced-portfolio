@@ -11,8 +11,25 @@ class App{
     getLocation(){
         navigator.geolocation.getCurrentPosition(
             this.gotLocation.bind(this), 
-            this.errorLocation.bind(this)
-        );
+            this.errorLocation.bind(this)   
+        ); 
+    }
+
+    checkLocalStorage(){
+        let storageTime = localStorage.getItem("storageTime");
+        let actualTime = new Date().getTime();
+        if(actualTime-storageTime < 1000 * 60 * 60){
+            if(localStorage.getItem("storageTemp") === null) {
+                return false;
+            } 
+            else{
+                return true;
+            }
+        }
+        else{
+            localStorage.clear();
+            return false;
+        }
     }
 
     //gegevens opnemen en in object steken
@@ -23,6 +40,7 @@ class App{
       
         console.log(result);
         console.log(this.lat);
+
     }
 
     getWeather(){
@@ -31,19 +49,25 @@ class App{
     .then(response =>{
         return response.json();
     } ) .then(data =>{
-        let fahr= data.main.temp;
+        let fahr = data.main.temp;
         let temperature = (fahr - 32)/1.8;
         temperature = temperature.toFixed(2);
         document.querySelector("#weather").innerHTML= "it's " + temperature + " degrees outside";
         document.querySelector("#weather").style.color="white";
         
-        if (temperature < 9){
+        if (temperature < 15){
             this.activityInside();
             document.querySelector(".container").style.background = `url(cloudy.jpg)`;
+            document.querySelector(".container").style.backgroundSize = "150%";
+            document.querySelector(".container").style.backgroundRepeat = "no-repeat";
+
+
         }
         else{
             this.activityOutside();
             document.querySelector(".container").style.background = `url(sunny.jpg)`;
+            document.querySelector(".container").style.backgroundSize = "500%";
+            document.querySelector(".container").style.backgroundRepeat = "no-repeat";
         }   
     })
     
@@ -61,8 +85,7 @@ class App{
         .then(data =>{
             console.log(data);
             document.querySelector("#activityInside").innerHTML= data.activity;
-            document.querySelector("#activityInside").style.color="white";
-            
+            document.querySelector("#activityInside").style.color="white";  
         })
         .catch(err => {
             console.log(err);
