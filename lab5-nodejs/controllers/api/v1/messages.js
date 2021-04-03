@@ -1,26 +1,37 @@
 const getAll = (req, res)=>{
+    if(req.qeury.user){
+        let user = req.query.user
     res.json({
         "status": "succes",
         "data" : {
-            "messages": "GETTING messages"
+            "message": "GETTING messages for username: ${user}"
         }
     });
-};
+} else{
+    res.json({
+        status:"succes",
+        data:{
+            message: "GET all messages"
+        }
+    });
+}
+}
 
 const getAllId = (req, res)=>{
         res.json({
             "status": "succes",
             "data" : {
-                "messages": "GETTING messeages with ID" + req.params.id
+                "message": "GETTING messeages with ID" + req.params.id
             }
         });
     }
 
-const create = (req, res)=>{
+const save = (req, res)=>{
+    let username = "Pickachu"
     res.json({
         "status": "succes",
         "data" : {
-            "messages": "posting a new message for user Pickachu"
+            "message": "posting a new message for user" + req.query.user
         }
     });
 }
@@ -29,7 +40,7 @@ const update = (req, res)=>{
     res.json({
         "status": "succes",
         "data" : {
-            "messages": "UPDATING a message with id" + req.params.id
+            "message": "UPDATING a message with id" + req.params.id
         }
     });
 };
@@ -38,23 +49,14 @@ const remove = (req, res)=>{
     res.json({
         "status": "succes",
         "data" : {
-            "messages": "DELETING a message with id" + req.params.id
+            "message": "DELETING a message with id" + req.params.id
         }
     });
 }
 
-const getAllUser = (req, res)=>{
-    res.json({
-        "status": "succes",
-        "data" : {
-            "messages": "getting message for username" + req.query.user
-        }
-    });
-}
 
 module.exports.getAll= getAll;
 module.exports.getAllId=getAllId;
-module.exports.create=create;
+module.exports.save=save;
 module.exports.update=update;
 module.exports.remove=remove;
-module.exports.getAllUser=getAllUser;
