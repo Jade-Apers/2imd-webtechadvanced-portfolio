@@ -23,14 +23,17 @@ class App{
         } else{
             this.dataFromStorage();
         }
-        //this.getWeather(); //eens je de coordinaten hebt gaan we het weer oproepen
-        console.log(result);
-        console.log(this.lat);
     }
 
     checkLocalStorage(){
-        let storageTime = localStorage.getItem("storageTime");
-        let actualTime = new Date().getTime();
+
+        if(localStorage.length===0){
+            return false;
+        }
+
+        var storageTime = localStorage.getItem("storageTime");
+        var actualTime = new Date().getTime();
+
         if(actualTime-storageTime < 1000 * 60 * 60){
             if(localStorage.getItem("storageTemp") === null) {
                 return false;
@@ -46,29 +49,30 @@ class App{
     }
 
     dataFromStorage(){
-      temperature = localStorage.getItem("storageTemp");
-      this.showTemperature(temperature);
+      let temp = localStorage.getItem("storageTemp");
+      this.showTemperature(temp);
     }
 
     getWeather(){
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.long}&appid=${this.apiKey}&units=imperial`;
     fetch(url)
     .then(response =>{
-        return response.json();
-    } ) .then(data =>{
+        return response.json();} ) 
+        .then(data =>{
         let fahr = data.main.temp;
         let temperature = (fahr - 32)/1.8;
         temperature = temperature.toFixed(2);
         this.showTemperature(temperature);
+        localStorage.setItem("storageTime", new Date().getTime());
+        localStorage.setItem("storageTemp", temperature);
+        console.log(localStorage);
     })
     .catch(err =>{
         console.log(err);
     })
-    console.log("check");
 }
     showTemperature(temperature){
-
-        if (temperature < 15){
+        if (temperature < 12){
             this.activityInside();
             document.querySelector(".title").innerHTML= "It's " + temperature + " °C outside." + "<br>That means that it's time for a relaxing activity.";
             document.querySelector(".container").style.background = `url(cloudy.jpg)`;
@@ -82,9 +86,8 @@ class App{
             document.querySelector(".container").style.backgroundSize = "500%";
             document.querySelector(".container").style.backgroundRepeat = "no-repeat";
         }  
-        temperature = localStorage.setItem("storageTemp");
     }
-  
+
     activityInside(){
         let urlactivity= "http://www.boredapi.com/api/activity?type=relaxation";
         fetch(urlactivity)
