@@ -1,60 +1,15 @@
 const express = require('express');
-const { param } = require('../..');
-const router = express.Router()
+const {param} = require('../..');
+const router = express.Router();
+const messagesController = require('../../../controllers/api/v1/messages');
 
-router.get("/", (req, res)=>{
-    res.json({
-        "status": "succes",
-        "data" : {
-            "messages": "GETTING messages"
-        }
-    });
-});
 
-router.get("/:id", (req, res)=>{
-    res.json({
-        "status": "succes",
-        "data" : {
-            "messages": "GETTING messeages with ID" + req.params.id
-        }
-    });
-});
-
-router.post("/", (req, res)=>{
-    res.json({
-        "status": "succes",
-        "data" : {
-            "messages": "posting a new message for user Pickachu"
-        }
-    });
-});
-
-router.put("/:id", (req, res)=>{
-    res.json({
-        "status": "succes",
-        "data" : {
-            "messages": "UPDATING a message with id" + req.params.id
-        }
-    });
-});
-
-router.delete("/:id", (req, res)=>{
-    res.json({
-        "status": "succes",
-        "data" : {
-            "messages": "DELETING a message with id" + req.params.id
-        }
-    });
-});
-
-router.get("/?user=username", (req, res)=>{
-    res.json({
-        "status": "succes",
-        "data" : {
-            "messages": "getting message for username" + req.query.user
-        }
-    });
-});
+router.get("/", messagesController.getAll);
+router.get("/:id", messagesController.getAll);
+router.post("/", messagesController.create);
+router.put("/:id", messagesController.update);
+router.delete("/:id", messagesController.remove);
+router.get("/?user=username", messagesController.getAll);
 
 module.exports = router;
 
