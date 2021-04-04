@@ -24,7 +24,5 @@
 ## Lab 5
 [Click here for lab 4](https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio/tree/main/lab5-nodejs)
 
-[Click here for codesandbox code for the to do app ](https://codesandbox.io/s/app-weather-and-fun-activity-t3j88)
-
 
 
