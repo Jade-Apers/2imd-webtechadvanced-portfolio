@@ -1,10 +1,9 @@
 const getAll = (req, res)=>{
-    if(req.qeury.user){
-        let user = req.query.user
+    if(req.query.user){
     res.json({
-        "status": "succes",
-        "data" : {
-            "message": "GETTING messages for username: ${user}"
+        status: "succes",
+        data : {
+            message: "GETTING messages for username:" + req.query.user
         }
     });
 } else{
@@ -19,41 +18,39 @@ const getAll = (req, res)=>{
 
 const getAllId = (req, res)=>{
         res.json({
-            "status": "succes",
-            "data" : {
-                "message": "GETTING messeages with ID" + req.params.id
+            status: "succes",
+            data: {
+                message: "GETTING messages with ID" + req.params.id
             }
         });
     }
 
 const save = (req, res)=>{
-    let username = "Pickachu"
     res.json({
-        "status": "succes",
-        "data" : {
-            "message": "posting a new message for user" + req.query.user
+        status: "succes",
+        data: {
+            message: 'posting a new message for user pickachu'
         }
     });
 }
 
 const update = (req, res)=>{
     res.json({
-        "status": "succes",
-        "data" : {
-            "message": "UPDATING a message with id" + req.params.id
+        status: "succes",
+        data : {
+            message: 'UPDATING a message with id' + req.params.id
         }
     });
 };
 
 const remove = (req, res)=>{
     res.json({
-        "status": "succes",
-        "data" : {
-            "message": "DELETING a message with id" + req.params.id
+        status: "succes",
+        data : {
+            message: "DELETING a message with id" + req.params.id
         }
     });
 }
-
 
 module.exports.getAll= getAll;
 module.exports.getAllId=getAllId;
