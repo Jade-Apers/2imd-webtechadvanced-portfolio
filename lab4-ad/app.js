@@ -72,7 +72,7 @@ class App{
     })
 }
     showTemperature(temperature){
-        if (temperature < 13){
+        if (temperature < 10){
             this.activityInside();
             document.querySelector(".title").innerHTML= "It's " + temperature + " °C outside." + "<br> Are you meeting us today inside the bar?";
             document.querySelector(".container").style.background = `url(cloudy.jpg)`;
@@ -106,6 +106,10 @@ class App{
             document.querySelector("#ingredient3").innerHTML= data.drinks[0].strIngredient3;
             document.querySelector("#ingredient4").innerHTML= data.drinks[0].strIngredient4;
             document.querySelector("#cocktail").style.color="white";  
+            document.querySelector("#ingredient1").style.color="white";  
+            document.querySelector("#ingredient2").style.color="white"; 
+            document.querySelector("#ingredient3").style.color="white"; 
+            document.querySelector("#ingredient4").style.color="white"; 
             document.querySelector("#cocktail").style.fontSize="25px";
             document.querySelector("#cocktail").style.padding= "4px"; 
             document.querySelector("#cocktail").style.fontFamily= "calibri";  
