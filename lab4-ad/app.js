@@ -72,16 +72,16 @@ class App{
     })
 }
     showTemperature(temperature){
-        if (temperature < 12){
+        if (temperature < 13){
             this.activityInside();
-            document.querySelector(".title").innerHTML= "It's " + temperature + " °C outside." + "<br>That means that it's time for a relaxing activity.";
+            document.querySelector(".title").innerHTML= "It's " + temperature + " °C outside." + "<br> Are you meeting us today inside the bar?";
             document.querySelector(".container").style.background = `url(cloudy.jpg)`;
             document.querySelector(".container").style.backgroundSize = "150%";
             document.querySelector(".container").style.backgroundRepeat = "no-repeat";
         }
         else{
             this.activityOutside();
-            document.querySelector(".title").innerHTML= "It's " + temperature + " °C outside." + "<br>That means that it's a happy day for a social activity.";
+            document.querySelector(".title").innerHTML= "It's " + temperature + " °C outside." + "<br> Are you meeting us today at our terras?";
             document.querySelector(".container").style.background = `url(sunny.jpg)`;
             document.querySelector(".container").style.backgroundSize = "500%";
             document.querySelector(".container").style.backgroundRepeat = "no-repeat";
@@ -89,18 +89,26 @@ class App{
     }
 
     activityInside(){
-        let urlactivity= "http://www.boredapi.com/api/activity?type=relaxation";
+        let urlactivity= "https://www.thecocktaildb.com/api/json/v1/1/random.php";
         fetch(urlactivity)
         .then(response =>{
             return response.json();
         })
         .then(data =>{
             console.log(data);
-            document.querySelector("#activityInside").innerHTML= data.activity;
-            document.querySelector("#activityInside").style.color="white";  
-            document.querySelector("#activityInside").style.fontSize="25px";
-            document.querySelector("#activityInside").style.padding= "5px"; 
-            document.querySelector("#activityInside").style.fontFamily= "calibri";  
+            document.querySelector("#cocktail").innerHTML= data.drinks[0].strDrink;
+            let picture = document.querySelector('#picture');
+            let img= document.createElement('img');
+            img.src= data.drinks[0].strDrinkThumb;
+            picture.appendChild(img);
+            document.querySelector("#ingredient1").innerHTML= data.drinks[0].strIngredient1;
+            document.querySelector("#ingredient2").innerHTML= data.drinks[0].strIngredient2;
+            document.querySelector("#ingredient3").innerHTML= data.drinks[0].strIngredient3;
+            document.querySelector("#ingredient4").innerHTML= data.drinks[0].strIngredient4;
+            document.querySelector("#cocktail").style.color="white";  
+            document.querySelector("#cocktail").style.fontSize="25px";
+            document.querySelector("#cocktail").style.padding= "4px"; 
+            document.querySelector("#cocktail").style.fontFamily= "calibri";  
         })
         .catch(err => {
             console.log(err);
@@ -108,18 +116,26 @@ class App{
     }
 
     activityOutside(){
-        let urlactivity= "http://www.boredapi.com/api/activity?type=social";
+        let urlactivity= "https://www.thecocktaildb.com/api/json/v1/1/random.php";
         fetch(urlactivity)
         .then(response =>{
             return response.json();
         })
         .then(data =>{
             console.log(data);
-            document.querySelector("#activityOutside").innerHTML= data.activity;
-            document.querySelector("#activityOutside").style.color="white";
-            document.querySelector("#activityOutside").style.fontSize="25px";
-            document.querySelector("#activityOutside").style.padding= "5px"; 
-            document.querySelector("#activityOutside").style.fontFamily= "calibri"; 
+            document.querySelector("#cocktail").innerHTML= data.drinks[0].strDrink;
+            let picture = document.querySelector('#picture');
+            let img= document.createElement('img');
+            img.src= data.drinks[0].strDrinkThumb;
+            picture.appendChild(img);
+            document.querySelector("#ingredient1").innerHTML= data.drinks[0].strIngredient1;
+            document.querySelector("#ingredient2").innerHTML= data.drinks[0].strIngredient2;
+            document.querySelector("#ingredient3").innerHTML= data.drinks[0].strIngredient3;
+            document.querySelector("#ingredient4").innerHTML= data.drinks[0].strIngredient4;
+            document.querySelector("#cocktail").style.color="white";  
+            document.querySelector("#cocktail").style.fontSize="25px";
+            document.querySelector("#cocktail").style.padding= "4px"; 
+            document.querySelector("#cocktail").style.fontFamily= "calibri";  
         })
         .catch(err => {
             console.log(err);
