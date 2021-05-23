@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio/issues"
   },
-  "homepage": "https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio#readme"
+  "homepage": "https://github.com/Jade-Apers/2imd-webtechadvanced-portfolio#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "node": "^16.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }

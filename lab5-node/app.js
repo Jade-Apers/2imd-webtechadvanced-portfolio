@@ -8,9 +8,6 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiMessagesRouter= require('./routes/api/v1/messages');
 
-
-const app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -42,5 +39,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-//heroku
